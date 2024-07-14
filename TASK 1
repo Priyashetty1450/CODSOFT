@@ -1,0 +1,144 @@
+**HTML**
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="anim.css">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" placeholder="0" id="take">
+        <div>
+            <button class="op">C</button>
+            <button class="op">Del</i></button>
+            <button class="op">%</button>
+            <button class="op">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</i></button>
+            <button>9</button>
+            <button class="op">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</i></button>
+            <button>6</button>
+            <button class="op">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</i></button>
+            <button>3</button>
+            <button class="op">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</i></button>
+            <button>.</button>
+            <button class="equal">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
+
+CSS
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:url(env.jpg) /*linear-gradient(43deg , pink,purple);*/
+}
+.calculator{
+    border: 2px solid wheat;
+    padding: 20px;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: 8px 8px 16px rgba(163, 247, 73, 0.5);
+    
+}
+input{
+    width: 320px;
+    border:none;
+    padding: 24px;
+    margin: 10px;
+    background: transparent;
+    box-shadow:0px 3px 15px rgbs(84,84,84,0.1) ;
+    font-size: 45px;
+    text-align: right;
+    cursor: pointer;
+    color: rgb(251, 240, 245);
+}
+ input::placeholder{
+    color: rgb(242, 232, 243);
+    
+}
+button{
+    font-size: 22px;
+    color: antiquewhite;
+    border: none;
+    width: 60px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(123, 107, 248);
+   
+    box-shadow:-7px -7px 14px rgba(41, 39, 39, 0.4) ;
+    cursor: pointer;
+}
+.equal{
+    background-color: rgb(14, 36, 162);
+}
+.op{
+   font-size: 22px;
+   color: rgb(42, 6, 76);
+}
+
+
+
+Javascript
+let input=document.getElementById("take");
+let buttons=document.querySelectorAll('button');
+
+let string="";
+let arr = Array.from(buttons);
+arr.forEach(buttons => {
+    buttons.addEventListener('click',(e)=>{
+        if (e.target.innerHTML == '='){
+            string=eval(string);
+            input.value=string;
+        }
+        else if(e.target.innerHTML == 'C'){
+            string = "";
+            input.value = string ;
+        }
+          else if (e.target.innerHTML == 'Del'){
+             string = string.substring(0,string.length-1);
+             input.value = string;
+          }
+
+        else {
+
+        
+        string +=e.target.innerHTML;
+        input.value = string;
+        }
+    })
+})
