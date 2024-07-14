@@ -50,7 +50,8 @@
 </body>
 </html>
 
-CSS
+**CSS**
+
 
 
 *{
@@ -113,7 +114,10 @@ button{
 
 
 
-Javascript
+**Javascript**
+
+
+
 let input=document.getElementById("take");
 let buttons=document.querySelectorAll('button');
 
